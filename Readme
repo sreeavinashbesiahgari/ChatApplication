@@ -1,3 +1,9 @@
+A chat application has two components: a chat server and chat clients. A chat server is an
+application program that maintains the user account information, and facilitate the chat
+functionality. A chat client is an application program that can send either broadcast or targeted
+messages to other clients.
+
+
 To use this project use : 
 
 step 1: 
