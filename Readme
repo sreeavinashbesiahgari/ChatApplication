@@ -4,6 +4,32 @@ functionality. A chat client is an application program that can send either broa
 messages to other clients.
 
 
+A user can perform the following four operations in chat_client:
+1. quit the client program using command "exit". If a TCP connection is open, the client
+should close the connection before exiting the program. The "exit" command is only
+issued when the user has logged out from the server (see below for login and logout
+commands).
+2. log into the server using command "login" in the format of "login username". In this
+project, we do not consider user password, and we also assume that no two users will
+give the same username when they log in. After receiving the login command, the
+server will simply maintain some proper information for the username, in particular, the
+socket connection information for the username, so that later it can properly forward
+messages to this username.
+3. log out from the server, in the format "logout". The server will remove the socket
+connection information for the corresponding client after it receives the logout
+command. After the logout command is sent to the server, the user will have the same
+interface as when the client program first starts. That is, the user can issue two
+commands "login" to log into the server, and "exit" to quit the client program.
+4. send a chat message in the format of "chat [@username] some_message", where
+@username is optional parameter of the chat command. If @username is not present in
+the command, the corresponding some_message is a broadcast message, the server
+should forward the message to all the users who are currently logged in. If @username
+is present in the chat command, the some_message should only be forwarded to the
+corresponding "username". Note that "chat" command can only be issued after the user
+has logged into the server.
+
+
+
 To use this project use : 
 
 step 1: 
