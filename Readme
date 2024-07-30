@@ -1,0 +1,59 @@
+To use this project use : 
+
+step 1: 
+
+ scl enable devtoolset-11 bash
+
+step 2:
+
+make all 
+
+step 3:
+Run server in terminal 1
+
+server server.conf
+
+step 4: 
+
+Login as A in terminal 2
+
+client client.conf 
+>> login A
+
+step 5:
+
+Login as B in terminal 3 
+
+client client.conf 
+>>login B
+
+now you can chat with A : shown below
+
+>>chat @A hi
+
+
+>>Logout 
+: To logout as user
+
+>>exit : To Exit 
+
+
+The pthread library is employed in the following applications:
+
+Using pthread_create(), two threads are generated in the ChatClient::handle_messenger_() method. One thread receives messages from the server, while the other thread sends messages to the server. The receive_wrapper() function and the ChatClient::send() method are used to construct these threads.
+In the ChatClient::handle_messenger_() method, the pthread_attr_t structure is used to set thread properties such as the thread's detach state.
+In the ChatClient::handle_messenger_() method, the pthread_join() function is used to wait for the threads generated with pthread_create() to terminate.
+
+select() is used to monitor file descriptors for I/O events.
+In this code, select() is used to wait for messages to be received from the server on the client's socket file descriptor (cfd).The select() function takes five arguments:max_fd+1: the highest file descriptor in the set plus one.
+readmessages_fds: a pointer to a set of file descriptors to be monitored for incoming data to be read.
+The return value of select() is the number of file descriptors that are ready for I/O, or -1 on error.
+
+
+
+
+
+
+
+
+
